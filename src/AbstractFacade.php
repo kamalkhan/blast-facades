@@ -36,7 +36,7 @@ abstract class AbstractFacade
      */
     public static function __instance()
     {
-        return FacadeFactory::getContainer()->get(static::accessor());
+        return FacadeFactory::getContainer()->make(static::accessor());
     }
 
     /**

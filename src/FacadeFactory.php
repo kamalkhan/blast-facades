@@ -12,7 +12,8 @@
 
 namespace Blast\Facades;
 
-use Interop\Container\ContainerInterface;
+// use Interop\Container\ContainerInterface;
+use Auryn\Injector;
 
 class FacadeFactory {
 
@@ -33,9 +34,9 @@ class FacadeFactory {
     /**
      * @param ContainerInterface $container
      */
-    public static function setContainer(ContainerInterface $container)
+    public static function setContainer(Injector $Injector)
     {
-        self::$container = $container;
+        self::$container = $Injector;
     }
 
     /**
@@ -48,7 +49,7 @@ class FacadeFactory {
     public static function create($accessor, $name, array $arguments = [])
     {
         $container = static::getContainer();
-        $object = $container->get($accessor);
+        $object = $container->make($accessor);
 
         return call_user_func_array([$object, $name], $arguments);
     }
