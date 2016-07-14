@@ -45,7 +45,7 @@ abstract class AbstractFacade
      * @throws Exception
      */
     protected static function accessor(){
-        throw new Exception(sprintf('Unknow accessor in %s', static::class));
+        throw new Exception(sprintf('Unknow accessor in %s', get_class()));
         return '';
     }
 
